@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Alternativa Auto Peças - Líder em Peças Automotivas em Uberlândia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #E31E24;
+            --dark-red: #B71C1C;
+            --light-red: #FF5252;
+            --accent-red: #FF1744;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #000000;
+            --card-bg: #121212;
+            --text-light: #ffffff;
+            --text-gray: #b0b0b0;
+            --text-dark-gray: #707070;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-red);
+            border-radius: 10px;
+        }
+
+        /* Header Premium */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10000;
+            box-shadow: 0 5px 30px rgba(227, 30, 36, 0.4);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(227, 30, 36, 0.2);
+        }
+
+        nav {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            height: 70px;
+            filter: drop-shadow(0 0 20px rgba(227, 30, 36, 0.6));
+            transition: all 0.4s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.08) rotate(-2deg);
+            filter: drop-shadow(0 0 30px rgba(227, 30, 36, 0.9));
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-shadow: 0 0 20px rgba(227, 30, 36, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-red), var(--accent-red));
+            opacity: 0;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 0.15;
+        }
+
+        .nav-links a:hover {
+            color: var(--light-red);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Premium */
+        .hero {
+            margin-top: 90px;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(227, 30, 36, 0.85) 0%, 
+                rgba(10, 10, 10, 0.7) 50%,
+                rgba(0, 0, 0, 0.95) 100%);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            padding: 3rem;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(227, 30, 36, 0.2);
+            border: 2px solid var(--primary-red);
+            color: var(--light-red);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(227, 30, 36, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(227, 30, 36, 0.8);
+            }
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+            font-weight: 900;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, #ff5252 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-gray);
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
+            font-weight: 300;
+            max-width: 700px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-red), var(--accent-red));
+            color: white;
+            padding: 1.3rem 3.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 50px rgba(227, 30, 36, 0.5);
+            border: 2px solid var(--primary-red);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(227, 30, 36, 0.7);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--dark-bg) 100%);
+            padding: 5rem 3rem;
+            border-top: 2px solid rgba(227, 30, 36, 0.3);
+            border-bottom: 2px solid rgba(227, 30, 36, 0.3);
+        }
+
+        .stats-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(227, 30, 36, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(227, 30, 36, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            background: rgba(227, 30, 36, 0.1);
+            border-color: var(--primary-red);
+            box-shadow: 0 20px 60px rgba(227, 30, 36, 0.3);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 30px rgba(227, 30, 36, 0.5);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* About Section Premium */
+        .about-section {
+            padding: 8rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: rgba(227, 30, 36, 0.15);
+            color: var(--light-red);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(227, 30, 36, 0.3);
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--primary-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-description {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .about-images {
+            position: relative;
+            height: 600px;
+        }
+
+        .about-image-main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 70%;
+            height: 70%;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(227, 30, 36, 0.4);
+            border: 3px solid rgba(227, 30, 36, 0.3);
+        }
+
+        .about-image-secondary {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60%;
+            height: 60%;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(227, 30, 36, 0.6);
+            border: 3px solid var(--primary-red);
+        }
+
+        .about-image-main img,
+        .about-image-secondary img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .about-image-main:hover img,
+        .about-image-secondary:hover img {
+            transform: scale(1.1);
+        }
+
+        .about-content {
+            padding: 2rem;
+        }
+
+        .about-content h3 {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .about-content p {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            line-height: 2;
+            margin-bottom: 2rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(227, 30, 36, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(227, 30, 36, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(227, 30, 36, 0.1);
+            transform: translateX(10px);
+            border-color: var(--primary-red);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            min-width: 40px;
+        }
+
+        .feature-text h4 {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .feature-text p {
+            color: var(--text-dark-gray);
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Services Premium */
+        .services-section {
+            padding: 8rem 3rem;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--card-bg) 50%, var(--dark-bg) 100%);
+        }
+
+        .services-grid {
+            max-width: 1600px;
+            margin: 4rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(18, 18, 18, 0.8) 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.5s ease;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-red), var(--accent-red));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--primary-red);
+            box-shadow: 0 30px 80px rgba(227, 30, 36, 0.4);
+        }
+
+        .service-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-icon {
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-red), var(--light-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(227, 30, 36, 0.5));
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* Location Section */
+        .location-section {
+            padding: 8rem 3rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            margin-top: 4rem;
+        }
+
+        .location-info {
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(18, 18, 18, 0.8) 100%);
+            padding: 4rem;
+            border-radius: 30px;
+            border: 2px solid rgba(227, 30, 36, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(227, 30, 36, 0.05);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(227, 30, 36, 0.1);
+        }
+
+        .contact-item:hover {
+            background: rgba(227, 30, 36, 0.1);
+            transform: translateX(15px);
+            border-color: var(--primary-red);
+            box-shadow: 0 10px 40px rgba(227, 30, 36, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            min-width: 50px;
+            background: linear-gradient(135deg, var(--primary-red), var(--light-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-details h3 {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .contact-details p,
+        .contact-details a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--light-red);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(76, 175, 80, 0.15);
+            color: #4CAF50;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            margin-top: 1rem;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: statusPulse 2s infinite;
+            box-shadow: 0 0 20px #4CAF50;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.2);
+            }
+        }
+
+        .map-container {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(227, 30, 36, 0.4);
+            border: 3px solid var(--primary-red);
+            height: 650px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* MG Map */
+        .mg-map-container {
+            margin-top: 4rem;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 30px;
+            border: 2px solid rgba(227, 30, 36, 0.3);
+            text-align: center;
+        }
+
+        .mg-map-container h3 {
+            font-size: 2rem;
+            color: var(--primary-red);
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .mg-map {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            aspect-ratio: 1 / 1;
+        }
+
+        .mg-map-shape {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(227, 30, 36, 0.2), rgba(227, 30, 36, 0.05));
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612"><path d="M35,298 L40,280 L47,264 L56,250 L67,238 L80,228 L95,220 L112,214 L130,210 L150,208 L170,208 L190,210 L210,214 L228,220 L245,228 L260,238 L273,250 L284,264 L293,280 L300,298 L304,316 L306,336 L306,356 L304,376 L300,394 L293,410 L284,425 L273,438 L260,449 L245,458 L228,465 L210,470 L190,473 L170,474 L150,473 L130,470 L112,465 L95,458 L80,449 L67,438 L56,425 L47,410 L40,394 L35,376 L33,356 L33,336 L35,316 Z M320,180 L335,175 L352,172 L370,171 L388,172 L405,175 L420,180 L434,187 L447,196 L458,207 L468,220 L476,235 L482,251 L487,268 L489,286 L489,304 L487,322 L482,339 L476,355 L468,370 L458,383 L447,394 L434,403 L420,410 L405,415 L388,418 L370,419 L352,418 L335,415 L320,410 M485,80 L500,75 L515,72 L530,71 L545,72 L560,75 L573,80 L585,87 L595,96 L603,107 L609,120 L612,134 L612,149 L609,164 L603,178 L595,191 L585,202 L573,211 L560,218 L545,223 L530,226 L515,227 L500,226 L485,223"/></svg>');
+            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612"><path d="M35,298 L40,280 L47,264 L56,250 L67,238 L80,228 L95,220 L112,214 L130,210 L150,208 L170,208 L190,210 L210,214 L228,220 L245,228 L260,238 L273,250 L284,264 L293,280 L300,298 L304,316 L306,336 L306,356 L304,376 L300,394 L293,410 L284,425 L273,438 L260,449 L245,458 L228,465 L210,470 L190,473 L170,474 L150,473 L130,470 L112,465 L95,458 L80,449 L67,438 L56,425 L47,410 L40,394 L35,376 L33,356 L33,336 L35,316 Z M320,180 L335,175 L352,172 L370,171 L388,172 L405,175 L420,180 L434,187 L447,196 L458,207 L468,220 L476,235 L482,251 L487,268 L489,286 L489,304 L487,322 L482,339 L476,355 L468,370 L458,383 L447,394 L434,403 L420,410 L405,415 L388,418 L370,419 L352,418 L335,415 L320,410 M485,80 L500,75 L515,72 L530,71 L545,72 L560,75 L573,80 L585,87 L595,96 L603,107 L609,120 L612,134 L612,149 L609,164 L603,178 L595,191 L585,202 L573,211 L560,218 L545,223 L530,226 L515,227 L500,226 L485,223"/></svg>');
+            -webkit-mask-size: contain;
+            -webkit-mask-position: center;
+            -webkit-mask-repeat: no-repeat;
+            mask-size: contain;
+            mask-position: center;
+            mask-repeat: no-repeat;
+            box-shadow: 0 20px 60px rgba(227, 30, 36, 0.4);
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .mg-map-shape:hover {
+            background: linear-gradient(135deg, rgba(227, 30, 36, 0.35), rgba(227, 30, 36, 0.15));
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(227, 30, 36, 0.5);
+        }
+
+        .mg-map-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            font-weight: 900;
+            color: rgba(227, 30, 36, 0.15);
+            pointer-events: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .mg-map svg {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 40px rgba(227, 30, 36, 0.4));
+        }
+
+        .city-pin {
+            position: absolute;
+            top: 50%;
+            left: 48%;
+            transform: translate(-50%, -50%);
+            background: var(--primary-red);
+            width: 30px;
+            height: 30px;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            animation: pinBounce 2s infinite;
+            box-shadow: 0 0 30px rgba(227, 30, 36, 0.8);
+        }
+
+        .city-pin::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 14px;
+            height: 14px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .city-label {
+            position: absolute;
+            top: 45%;
+            left: 55%;
+            background: var(--primary-red);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(227, 30, 36, 0.5);
+            animation: labelFloat 3s infinite;
+        }
+
+        @keyframes pinBounce {
+            0%, 100% {
+                transform: rotate(-45deg) translateY(0);
+            }
+            50% {
+                transform: rotate(-45deg) translateY(-10px);
+            }
+        }
+
+        @keyframes labelFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 8rem 3rem;
+            background: var(--card-bg);
+        }
+
+        .gallery-grid {
+            max-width: 1600px;
+            margin: 4rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 400px;
+            border-radius: 25px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(227, 30, 36, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-red);
+            box-shadow: 0 30px 80px rgba(227, 30, 36, 0.5);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(227, 30, 36, 0.9) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-text {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Footer Premium */
+        footer {
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--card-bg) 100%);
+            padding: 5rem 3rem 2rem;
+            border-top: 2px solid var(--primary-red);
+        }
+
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-brand img {
+            width: 180px;
+            filter: drop-shadow(0 0 20px rgba(227, 30, 36, 0.5));
+        }
+
+        .footer-brand p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .footer-column h4 {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(227, 30, 36, 0.1);
+            border: 2px solid rgba(227, 30, 36, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary-red);
+            border-color: var(--primary-red);
+            color: white;
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 10px 30px rgba(227, 30, 36, 0.5);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(227, 30, 36, 0.2);
+            color: var(--text-gray);
+        }
+
+        .footer-bottom p {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            width: 30px;
+            height: 3px;
+            background: var(--text-light);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .about-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 968px) {
+            nav {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero {
+                height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-images {
+                height: 400px;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-red), var(--accent-red));
+            z-index: 10001;
+            transition: width 0.1s ease;
+        }
+
+        /* Tawk.to Widget Styling */
+        #tawkchat-container {
+            z-index: 9999 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress"></div>
+
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="https://i.imgur.com/NNbDyGP.png" alt="Alternativa Auto Peças" class="logo">
+                <span class="brand-name">Alternativa Auto Peças</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#quem-somos">Quem Somos</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-background">
+            <div class="hero-slider">
+                <div class="hero-slide active" style="background-image: url('https://i.imgur.com/oizgGqQ.jpeg');"></div>
+                <div class="hero-slide" style="background-image: url('https://i.imgur.com/XjCgDp5.jpeg');"></div>
+            </div>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">✨ Sua melhor escolha em Uberlândia</div>
+            <h1>Alternativa Auto Peças</h1>
+            <p class="subtitle">Qualidade, variedade e atendimento excepcional para manter seu veículo sempre em perfeito estado</p>
+            <div class="hero-buttons">
+                <a href="#contato" class="cta-button">
+                    <span>Fale Conosco</span>
+                    <span>→</span>
+                </a>
+                <a href="#servicos" class="cta-button cta-secondary">
+                    <span>Nossos Serviços</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-card fade-in">
+                <div class="stat-number">41</div>
+                <div class="stat-label">Anos de Experiência</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number"> 10k+ </div>
+                <div class="stat-label">Peças em Estoque</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number"> 1000+ </div>
+                <div class="stat-label">Clientes Satisfeitos</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number"> 100% </div>
+                <div class="stat-label">Garantia de Qualidade</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quem-somos" class="about-section">
+        <div class="section-header fade-in">
+            <div class="section-badge">🏆 Sobre Nós</div>
+            <h2 class="section-title">Quem Somos</h2>
+            <p class="section-description">
+                Referência absoluta em peças automotivas em Uberlândia, oferecendo qualidade incomparável, organização e atendimento personalizado que supera todas as expectativas - Faça um orçamento conosco!
+            </p>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-images fade-in-left">
+                <div class="about-image-main">
+                    <img src="https://i.imgur.com/oizgGqQ.jpeg" alt="Fachada Principal">
+                </div>
+                <div class="about-image-secondary">
+                    <img src="https://i.imgur.com/XjCgDp5.jpeg" alt="Nossa Loja">
+                </div>
+            </div>
+
+            <div class="about-content fade-in-right">
+                <h3>Tradição e Inovação Andando Juntas</h3>
+                <p>
+                    A <strong>Alternativa Auto Peças</strong> nasceu da paixão por automóveis e do compromisso em oferecer as melhores soluções para nossos clientes. Com mais de 15 anos de experiência no mercado automotivo de Uberlândia, consolidamos nossa posição como referência em qualidade e confiabilidade.
+                </p>
+                <p>
+                    Nossa equipe altamente qualificada está sempre atualizada com as últimas tecnologias e tendências do mercado automotivo, garantindo que você encontre exatamente o que precisa, com a orientação correta e o melhor custo-benefício.
+                </p>
+                <p>
+                    Trabalhamos com um catálogo extenso que atende desde veículos populares até os modelos mais antigos, sempre adquirindo novos lotes e priorizando peças originais e de primeira linha que garantem segurança e durabilidade.
+                </p>
+
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">✅</div>
+                        <div class="feature-text">
+                            <h4>Peças Originais</h4>
+                            <p>Garantia de procedência e qualidade</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-text">
+                            <h4>Entrega Rápida</h4>
+                            <p>Agilidade que você precisa</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💎</div>
+                        <div class="feature-text">
+                            <h4>Melhor Custo-Benefício</h4>
+                            <p>Preços justos sem comprometer qualidade</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-text">
+                            <h4>Atendimento Especializado</h4>
+                            <p>Equipe técnica sempre à disposição</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="services-section">
+        <div class="section-header fade-in">
+            <div class="section-badge">⚙️ Nossos Serviços</div>
+            <h2 class="section-title">O Que Oferecemos</h2>
+            <p class="section-description">
+                Soluções completas e especializadas para todas as necessidades do seu veículo
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-card-content">
+                    <div class="service-icon">🔧</div>
+                    <h3>Peças Originais de Fábrica</h3>
+                    <p>Trabalhamos diretamente com as principais montadoras do mercado, garantindo peças 100% originais com certificado de autenticidade e garantia de fábrica para total segurança e tranquilidade.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-card-content">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Peças de Reposição Certificadas</h3>
+                    <p>Amplo catálogo de peças de reposição de marcas renomadas e certificadas, oferecendo excelente custo-benefício sem comprometer a qualidade e segurança do seu veículo.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-card-content">
+                    <div class="service-icon">🛒</div>
+                    <h3>Compra de Sucata Sob Demanda</h3>
+                    <p>Compramos sucata automotiva de acordo com suas necessidades. Negocie conosco e transforme peças usadas em valor, contribuindo para a economia circular e sustentabilidade.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-card-content">
+                    <div class="service-icon">✨</div>
+                    <h3>Estoque Gigantesco e Variado</h3>
+                    <p>Mantemos um dos maiores estoques da região com mais de 50.000 itens disponíveis, abrangendo todas as marcas nacionais e importadas, de carros populares a veículos de luxo.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-card-content">
+                    <div class="service-icon">⚡</div>
+                    <h3>Atendimento Expresso</h3>
+                    <p>Sistema de busca e separação ultra rápido que permite localizar e disponibilizar suas peças em minutos, economizando seu tempo precioso e mantendo você sempre em movimento.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-card-content">
+                    <div class="service-icon">💰</div>
+                    <h3>Preços Imbatíveis</h3>
+                    <p>Política de preços transparente e competitiva, sempre oferecendo as melhores condições do mercado com diversas opções de pagamento e condições especiais para clientes fiéis.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-card-content">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Garantia Total</h3>
+                    <p>Todas as nossas peças possuem garantia estendida contra defeitos de fabricação, assegurando total tranquilidade na sua compra e proteção do seu investimento.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-card-content">
+                    <div class="service-icon">🌐</div>
+                    <h3>Atendimento Online em Tempo Real</h3>
+                    <p>Consulte peças e faça orçamentos em tempo real via nosso chat online, disponível 24/7. Verifique disponibilidade e preços instantaneamente de qualquer lugar.</p>
+                </div>
+            </div>
+
+            <div class="service-card fade-in">
+                <div class="service-card-content">
+                    <div class="service-icon">🚚</div>
+                    <h3>Entrega Rápida</h3>
+                    <p>Serviço de entrega ágil em Uberlândia e região, levando suas peças com segurança e rapidez diretamente onde você precisar, facilitando ainda mais sua vida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="gallery-section">
+        <div class="section-header fade-in">
+            <div class="section-badge">📸 Nossa Estrutura</div>
+            <h2 class="section-title">Conheça Nossa Loja</h2>
+            <p class="section-description">
+                Ambiente moderno, organizado e preparado para melhor atendê-lo
+            </p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in">
+                <img src="https://i.imgur.com/oizgGqQ.jpeg" alt="Fachada da Loja">
+                <div class="gallery-overlay">
+                    <div class="gallery-text">Fachada Principal</div>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://i.imgur.com/XjCgDp5.jpeg" alt="Vista Externa">
+                <div class="gallery-overlay">
+                    <div class="gallery-text">Vista Externa</div>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://i.imgur.com/NNbDyGP.png" alt="Nossa Marca" style="object-fit: contain; background: #0a0a0a;">
+                <div class="gallery-overlay">
+                    <div class="gallery-text">Nossa Marca</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="location-section">
+        <div class="section-header fade-in">
+            <div class="section-badge">📍 Localização</div>
+            <h2 class="section-title">Onde Estamos</h2>
+            <p class="section-description">
+                Venha nos visitar ou entre em contato. Estamos prontos para atendê-lo!
+            </p>
+        </div>
+
+        <div class="location-grid">
+            <div class="location-info fade-in-left">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3>Endereço</h3>
+                        <p>R. Osmar Sáles Monteiro, 260<br>
+                        Bairro Presidente Roosevelt<br>
+                        Uberlândia - MG<br>
+                        CEP: 38401-036</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-details">
+                        <h3>Telefone / WhatsApp</h3>
+                        <a href="tel:+5534998101100">(34) 99810-1100</a>
+                        <p style="margin-top: 0.5rem; font-size: 0.95rem;">Clique para ligar ou enviar WhatsApp</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🧰</div>
+                    <div class="contact-details">
+                        <h3>E-mail</h3>
+                        <a href="mailto:alternativa1comercio@gmail.com">alternativa1comercio@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <div class="contact-details">
+                        <h3>Horário de Funcionamento</h3>
+                        <p>Segunda a Sexta: 08:00 - 17:00<br>
+                        Sábado: 08:00 - 12:00</p>
+                        <div class="status-badge">
+                            <span class="status-dot"></span>
+                            <span>Aberto agora</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">💬</div>
+                    <div class="contact-details">
+                        <h3>Chat Online</h3>
+                        <p>Fale agora mesmo com nossa equipe via chat em tempo real! Consulte disponibilidade, preços de peças e faça seu orçamento instantaneamente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fade-in-right">
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d942.3294691281298!2d-48.27864653039816!3d-18.922684401894983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94a445bea5555555%3A0x123456789!2sR.%20Osmar%20S%C3%A1les%20Monteiro%2C%20260%20-%20Pres.%20Roosevelt%2C%20Uberl%C3%A2ndia%20-%20MG%2C%2038401-036!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+                        allowfullscreen="" 
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-brand fade-in">
+                    <img src="https://i.imgur.com/NNbDyGP.png" alt="Alternativa Auto Peças">
+                    <p>
+                        Sua parceira de confiança em peças automotivas. Qualidade, variedade e atendimento excepcional que fazem a diferença para seu veículo.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="https://wa.me/5534998101100" class="social-link" aria-label="WhatsApp">💬</a>
+                        <a href="#" class="social-link" aria-label="YouTube">📺</a>
+                    </div>
+                </div>
+
+                <div class="footer-column fade-in">
+                    <h4>Links Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#quem-somos">Quem Somos</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#galeria">Galeria</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column fade-in">
+                    <h4>Serviços</h4>
+                    <ul class="footer-links">
+                        <li><a href="#servicos">Peças Originais</a></li>
+                        <li><a href="#servicos">Peças de Reposição</a></li>
+                        <li><a href="#servicos">Compra de Sucata</a></li>
+                        <li><a href="#servicos">Entrega Rápida</a></li>
+                        <li><a href="#servicos">Garantia Total</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column fade-in">
+                    <h4>Contato</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+5534998101100">(34) 99810-1100</a></li>
+                        <li><a href="mailto:alternativa1comercio@gmail.com">alternativa1comercio@gmail.com</a></li>
+                        <li>R. Osmar Sáles Monteiro, 260</li>
+                        <li>Uberlândia - MG</li>
+                        <li>CEP: 38401-036</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 <strong>Alternativa Auto Peças</strong>. Todos os direitos reservados.</p>
+                <p style="margin-top: 1rem;">Uberlândia - MG | Peças Automotivas de Qualidade Premium</p>
+            </div>
+        </div>
+    </footer>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68fb732eb926d8194d3ecd61/1j8b3jrdm';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <script>
+        // Hero Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        setInterval(nextSlide, 5000);
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 90;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / scrollHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+counters.forEach(counter => {
+            const animate = () => {
+                const originalText = counter.innerText;
+                const hasPlus = originalText.includes('+');
+                const hasPercent = originalText.includes('%');
+                const value = originalText.replace(/\D/g, '');
+                const data = +value;
+                const time = data / speed;
+                let current = 0;
+
+                const updateCount = () => {
+                    current += time;
+                    if (current < data) {
+                        let displayValue = Math.ceil(current);
+                        if (hasPlus) displayValue += '+';
+                        if (hasPercent) displayValue += '%';
+                        counter.innerText = displayValue;
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = originalText;
+                    }
+                };
+                updateCount();
+            };
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animate();
+                    counterObserver.disconnect();
+                }
+            }, { threshold: 0.5 });
+
+            counterObserver.observe(counter);
+        });
+
+        // Status Badge Update
+        function updateStatus() {
+            const now = new Date();
+            const day = now.getDay();
+            const hour = now.getHours();
+            const minute = now.getMinutes();
+            const statusBadge = document.querySelector('.status-badge');
+            const statusText = statusBadge.querySelector('span:last-child');
+            const statusDot = statusBadge.querySelector('.status-dot');
+            
+            let isOpen = false;
+            
+            // Monday to Friday: 8:00 - 17:00
+            if (day >= 1 && day <= 5) {
+                isOpen = (hour > 8 || (hour === 8 && minute >= 0)) && hour < 17;
+            }
+            // Saturday: 8:00 - 12:00
+            else if (day === 6) {
+                isOpen = (hour > 8 || (hour === 8 && minute >= 0)) && hour < 12;
+            }
+            
+            if (isOpen) {
+                statusBadge.style.background = 'rgba(76, 175, 80, 0.15)';
+                statusBadge.style.color = '#4CAF50';
+                statusBadge.style.borderColor = 'rgba(76, 175, 80, 0.3)';
+                statusDot.style.background = '#4CAF50';
+                statusDot.style.boxShadow = '0 0 20px #4CAF50';
+                statusText.textContent = 'Aberto agora';
+            } else {
+                statusBadge.style.background = 'rgba(244, 67, 54, 0.15)';
+                statusBadge.style.color = '#F44336';
+                statusBadge.style.borderColor = 'rgba(244, 67, 54, 0.3)';
+                statusDot.style.background = '#F44336';
+                statusDot.style.boxShadow = '0 0 20px #F44336';
+                statusText.textContent = 'Fechado';
+            }
+        }
+
+        updateStatus();
+        setInterval(updateStatus, 60000); // Update every minute
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Parallax Effect on Hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroSlides = document.querySelectorAll('.hero-slide');
+            heroSlides.forEach(slide => {
+                slide.style.transform = `translateY(${scrolled * 0.5}px)`;
+            });
+        });
+
+        // Lazy Loading for Images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img').forEach(img => imageObserver.observe(img));
+        }
+
+        // Add active state to navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = 'var(--primary-red)';
+                }
+            });
+        });
+
+        // Preload images for better performance
+        function preloadImages() {
+            const images = [
+                'https://i.imgur.com/NNbDyGP.png',
+                'https://i.imgur.com/oizgGqQ.jpeg',
+                'https://i.imgur.com/XjCgDp5.jpeg'
+            ];
+            
+            images.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        }
+
+        window.addEventListener('load', preloadImages);
+
+        // Add entrance animation to hero
+        window.addEventListener('load', () => {
+            document.querySelector('.hero-content').style.animation = 'fadeInUp 1.2s ease forwards';
+        });
+
+        // Easter egg: Konami code for special effect
+        let konamiCode = [];
+        const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        
+        window.addEventListener('keydown', (e) => {
+            konamiCode.push(e.key);
+            konamiCode.splice(-konamiPattern.length - 1, konamiCode.length - konamiPattern.length);
+            
+            if (konamiCode.join('') === konamiPattern.join('')) {
+                document.body.style.animation = 'rainbow 2s linear infinite';
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                }, 5000);
+            }
+        });
+
+        // Add CSS for rainbow effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rainbow {
+                0% { filter: hue-rotate(0deg); }
+                100% { filter: hue-rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Performance optimization: Debounce scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Apply debounce to scroll-heavy functions
+        const debouncedScroll = debounce(() => {
+            // Scroll-based updates here
+        }, 10);
+
+        window.addEventListener('scroll', debouncedScroll);
+
+        // Add "back to top" button
+        const backToTop = document.createElement('button');
+        backToTop.innerHTML = '↑';
+        backToTop.style.cssText = `
+            position: fixed;
+            bottom: 90px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-red), var(--accent-red));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            box-shadow: 0 10px 30px rgba(227, 30, 36, 0.4);
+        `;
+        document.body.appendChild(backToTop);
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.opacity = '1';
+                backToTop.style.pointerEvents = 'all';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.pointerEvents = 'none';
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        backToTop.addEventListener('mouseenter', () => {
+            backToTop.style.transform = 'translateY(-5px) scale(1.1)';
+            backToTop.style.boxShadow = '0 15px 40px rgba(227, 30, 36, 0.6)';
+        });
+
+        backToTop.addEventListener('mouseleave', () => {
+            backToTop.style.transform = 'translateY(0) scale(1)';
+            backToTop.style.boxShadow = '0 10px 30px rgba(227, 30, 36, 0.4)';
+        });
+
+        // Console message for developers
+        console.log('%c🚗 Alternativa Auto Peças', 'font-size: 24px; font-weight: bold; color: #E31E24;');
+        console.log('%cSite desenvolvido com ❤️ e tecnologia de ponta', 'font-size: 14px; color: #b0b0b0;');
+        console.log('%cInteressado em um site como este? Entre em contato!', 'font-size: 12px; color: #707070;');
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Accessibility improvements
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-nav');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-nav');
+        });
+
+        // Add focus styles for keyboard navigation
+        const focusStyle = document.createElement('style');
+        focusStyle.textContent = `
+            .keyboard-nav *:focus {
+                outline: 3px solid var(--primary-red);
+                outline-offset: 3px;
+            }
+        `;
+        document.head.appendChild(focusStyle);
+
+        // Add rich snippets data
+        const richSnippets = {
+            "@context": "https://schema.org",
+            "@type": "AutoPartsStore",
+            "name": "Alternativa Auto Peças",
+            "image": "https://i.imgur.com/NNbDyGP.png",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "R. Osmar Sáles Monteiro, 260",
+                "addressLocality": "Uberlândia",
+                "addressRegion": "MG",
+                "postalCode": "38401-036",
+                "addressCountry": "BR"
+            },
+            "telephone": "+5534998101100",
+            "openingHours": "Mo-Fr 08:00-17:00, Sa 08:00-12:00"
+        };
+
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = JSON.stringify(richSnippets);
+        document.head.appendChild(script);
+
+        // Final initialization message
+        console.log('%c✓ Site totalmente carregado e otimizado!', 'font-size: 16px; font-weight: bold; color: #4CAF50;');
+        console.log('%c• Animações ativas', 'color: #b0b0b0;');
+        console.log('%c• Scroll suave configurado', 'color: #b0b0b0;');
+        console.log('%c• Status da loja atualizado', 'color: #b0b0b0;');
+        console.log('%c• Performance otimizada', 'color: #b0b0b0;');
+        console.log('%c• Chat Tawk.to integrado!', 'color: #E31E24; font-weight: bold;');
+    </script>
+</body>
+</html>
