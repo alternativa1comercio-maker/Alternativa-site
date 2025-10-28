@@ -601,124 +601,191 @@
         }
 
         /* Location Section */
-        .location-section {
-            padding: 8rem 3rem;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
+       /* ==================== LOCATION SECTION - RESPONSIVA (PC: LADO A LADO | MOBILE: EMPILHADO) ==================== */
+.location-section {
+    padding: 8rem 3rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
 
-        .location-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            margin-top: 4rem;
-        }
+.location-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-top: 4rem;
+    justify-content: center;
+    align-items: stretch;
+}
 
-        .location-info {
-            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(18, 18, 18, 0.8) 100%);
-            padding: 4rem;
-            border-radius: 30px;
-            border: 2px solid rgba(227, 30, 36, 0.3);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
+.location-info {
+    flex: 1 1 400px;
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(18, 18, 18, 0.8) 100%);
+    padding: 3rem;
+    border-radius: 30px;
+    border: 2px solid rgba(227, 30, 36, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
 
-        .contact-item {
-            display: flex;
-            align-items: start;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: rgba(227, 30, 36, 0.05);
-            border-radius: 20px;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(227, 30, 36, 0.1);
-        }
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.8rem;
+    padding: 1.8rem;
+    background: rgba(227, 30, 36, 0.05);
+    border-radius: 18px;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(227, 30, 36, 0.1);
+}
 
-        .contact-item:hover {
-            background: rgba(227, 30, 36, 0.1);
-            transform: translateX(15px);
-            border-color: var(--primary-red);
-            box-shadow: 0 10px 40px rgba(227, 30, 36, 0.3);
-        }
+.contact-item:hover {
+    background: rgba(227, 30, 36, 0.1);
+    transform: translateX(12px);
+    border-color: var(--primary-red);
+    box-shadow: 0 8px 30px rgba(227, 30, 36, 0.3);
+}
 
-        .contact-icon {
-            font-size: 3rem;
-            min-width: 50px;
-            background: linear-gradient(135deg, var(--primary-red), var(--light-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+.contact-icon {
+    font-size: 2.6rem;
+    min-width: 50px;
+    background: linear-gradient(135deg, var(--primary-red), var(--light-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    flex-shrink: 0;
+}
 
-        .contact-details h3 {
-            color: var(--text-light);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
+.contact-details h3 {
+    color: var(--text-light);
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+}
 
-        .contact-details p,
-        .contact-details a {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-size: 1.15rem;
-            line-height: 1.8;
-            transition: color 0.3s ease;
-        }
+.contact-details p,
+.contact-details a {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    word-wrap: break-word;
+    margin: 0.2rem 0;
+}
 
-        .contact-details a:hover {
-            color: var(--light-red);
-        }
+.contact-details a:hover {
+    color: var(--light-red);
+}
 
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            background: rgba(76, 175, 80, 0.15);
-            color: #4CAF50;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 700;
-            border: 2px solid rgba(76, 175, 80, 0.3);
-            margin-top: 1rem;
-        }
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(76, 175, 80, 0.15);
+    color: #4CAF50;
+    padding: 0.7rem 1.4rem;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border: 2px solid rgba(76, 175, 80, 0.3);
+    margin-top: 0.5rem;
+}
 
-        .status-dot {
-            width: 12px;
-            height: 12px;
-            background: #4CAF50;
-            border-radius: 50%;
-            animation: statusPulse 2s infinite;
-            box-shadow: 0 0 20px #4CAF50;
-        }
+.status-dot {
+    width: 11px;
+    height: 11px;
+    background: #4CAF50;
+    border-radius: 50%;
+    animation: statusPulse 2s infinite;
+    box-shadow: 0 0 18px #4CAF50;
+}
 
-        @keyframes statusPulse {
-            0%, 100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.6;
-                transform: scale(1.2);
-            }
-        }
+.map-container {
+    flex: 1 1 500px;
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(227, 30, 36, 0.4);
+    border: 3px solid var(--primary-red);
+    height: 600px;
+}
 
-        .map-container {
-            position: relative;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(227, 30, 36, 0.4);
-            border: 3px solid var(--primary-red);
-            height: 650px;
-        }
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+/* ==================== RESPONSIVO: MOBILE = EMPILHADO ==================== */
+@media (max-width: 992px) {
+    .location-grid {
+        flex-direction: column;
+        align-items: center;
+    }
 
+    .location-info,
+    .map-container {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .map-container {
+        height: 400px;
+    }
+
+    .contact-item {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .contact-icon {
+        font-size: 2.3rem;
+    }
+
+    .contact-details h3 {
+        font-size: 1.3rem;
+    }
+
+    .contact-details p,
+    .contact-details a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .location-section {
+        padding: 5rem 1.5rem;
+    }
+
+    .location-info {
+        padding: 2rem;
+        gap: 1.2rem;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        padding: 1.6rem;
+    }
+
+    .contact-icon {
+        align-self: center;
+    }
+
+    .map-container {
+        height: 300px;
+        border-radius: 20px;
+        border-width: 2px;
+    }
+
+    .status-badge {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
         /* MG Map */
         .mg-map-container {
             margin-top: 4rem;
@@ -1967,6 +2034,7 @@ counters.forEach(counter => {
     </script>
 </body>
 </html>
+
 
 
 
