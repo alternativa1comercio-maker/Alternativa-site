@@ -1330,6 +1330,29 @@
             </div>
         </div>
     </section>
+<!-- VITRINE: peças em destaque -->
+<section id="vitrine" class="products-section" style="padding:3rem;">
+  <div class="section-header fade-in">
+    <div class="section-badge">🛒 Nossa Vitrine</div>
+    <h2 class="section-title">Peças em Destaque</h2>
+    <p class="section-description">Confira algumas de nossas peças disponíveis. Clique em Verificar Disponibilidade para abrir uma mensagem no WhatsApp.</p>
+  </div>
+
+  <div id="productsGrid" class="products-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:20px;"></div>
+
+  <div style="margin-top:18px;text-align:center;">
+    <a href="https://wa.me/5534998101100?text=Olá!%20Gostaria%20de%20ver%20outras%20peças" class="cta-button">💬 Consultar Outras Peças</a>
+  </div>
+</section>
+
+<!-- include vitrine JS -->
+<script>
+  window.__SUPABASE_CONFIG = window.__SUPABASE_CONFIG || {};
+  window.__SUPABASE_CONFIG.SUPABASE_URL = 'https://huqynzdklugllbvyiyjz.supabase.co';
+  window.__SUPABASE_CONFIG.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh1cXluemRrbHVnbGxidnlpeWp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0Nzg3MTIsImV4cCI6MjA4MTA1NDcxMn0.ziObwIGefHXzbblNQBvEvWx_AeeIy4pX0rqkgsJsVKA';
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
+<script src="vitrine.js"></script>
 
     <section id="quem-somos" class="about-section">
         <div class="section-header fade-in">
@@ -2032,6 +2055,7 @@ counters.forEach(counter => {
     </script>
 </body>
 </html>
+
 
 
 
