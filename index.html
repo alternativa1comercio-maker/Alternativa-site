@@ -1330,7 +1330,129 @@
             </div>
         </div>
     </section>
+<section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-card fade-in">
+                <div class="stat-number">41</div>
+                <div class="stat-label">Anos de Experiência</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number"> 10k+ </div>
+                <div class="stat-label">Peças em Estoque</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number"> 1000+ </div>
+                <div class="stat-label">Clientes Satisfeitos</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number"> 100% </div>
+                <div class="stat-label">Garantia de Qualidade</div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Products Showcase Section -->
+    <section id="produtos" class="products-section">
+        <div class="section-header fade-in">
+            <div class="section-badge">🛒 Nossa Vitrine</div>
+            <h2 class="section-title">Peças em Destaque</h2>
+            <p class="section-description">
+                Confira algumas de nossas peças disponíveis. Entre em contato para verificar disponibilidade e preços!
+            </p>
+            <button class="admin-toggle-btn" onclick="toggleAdminPanel()">
+                🔧 Gerenciar Produtos
+            </button>
+        </div>
+
+        <!-- Admin Panel -->
+        <div id="adminPanel" class="admin-panel">
+            <div class="admin-panel-header">
+                <h3>📦 Gerenciamento de Produtos</h3>
+                <button class="admin-close-btn" onclick="toggleAdminPanel()">✕</button>
+            </div>
+            
+            <div class="admin-form">
+                <h4>➕ Adicionar/Editar Produto</h4>
+                <input type="hidden" id="editProductId" value="">
+                
+                <div class="form-group">
+                    <label>Nome da Peça *</label>
+                    <input type="text" id="productName" placeholder="Ex: Motor Parcial 1.0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Descrição *</label>
+                    <textarea id="productDescription" placeholder="Descreva a peça..." rows="3" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Preço</label>
+                        <select id="priceType" onchange="togglePriceInput()">
+                            <option value="valor">Valor Fixo</option>
+                            <option value="combinar">A Combinar</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="priceValueGroup">
+                        <label>Valor (R$)</label>
+                        <input type="number" id="productPrice" placeholder="0.00" step="0.01" min="0">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Frete</label>
+                        <select id="shippingType">
+                            <option value="gratis">Grátis</option>
+                            <option value="combinar">A Combinar</option>
+                            <option value="valor">Valor Fixo</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="shippingValueGroup" style="display: none;">
+                        <label>Valor Frete (R$)</label>
+                        <input type="number" id="shippingPrice" placeholder="0.00" step="0.01" min="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>URL da Imagem *</label>
+                    <input type="url" id="productImage" placeholder="https://exemplo.com/imagem.jpg" required>
+                    <small>Cole o link direto da imagem (pode usar Imgur, Google Drive, etc)</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="productStatus">
+                        <option value="estoque">Em Estoque</option>
+                        <option value="vendido">Vendido</option>
+                        <option value="reservado">Reservado</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn-save" onclick="saveProduct()">💾 Salvar Produto</button>
+                    <button class="btn-cancel" onclick="cancelEdit()">❌ Cancelar</button>
+                </div>
+            </div>
+
+            <div class="admin-products-list">
+                <h4>📋 Produtos Cadastrados</h4>
+                <div id="adminProductsList"></div>
+            </div>
+        </div>
+
+        <!-- Products Display -->
+        <div class="products-grid" id="productsDisplay">
+            <!-- Products will be loaded here dynamically -->
+        </div>
+
+        <div class="products-footer fade-in">
+            <p>Não encontrou o que procura? Temos muito mais peças disponíveis!</p>
+            <a href="https://wa.me/5534998101100?text=Olá!%20Gostaria%20de%20consultar%20sobre%20peças%20disponíveis" class="cta-button">
+                <span>💬 Consultar Outras Peças</span>
+            </a>
+        </div>
+    </section>
     <section id="quem-somos" class="about-section">
         <div class="section-header fade-in">
             <div class="section-badge">🏆 Sobre Nós</div>
@@ -2032,6 +2154,7 @@ counters.forEach(counter => {
     </script>
 </body>
 </html>
+
 
 
 
