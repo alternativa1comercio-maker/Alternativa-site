@@ -2,7 +2,8 @@
 (async () => {
   const SUPABASE_URL = window.__SUPABASE_CONFIG.SUPABASE_URL;
   const SUPABASE_ANON_KEY = window.__SUPABASE_CONFIG.SUPABASE_ANON_KEY;
-  const supabase = supabasejs.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+ const supabase = window.supabase.createClient(URL, KEY);
+
 
   const grid = document.getElementById('productsGrid');
 
