@@ -1,19 +1,36 @@
 // vitrine.js
 (async () => {
+  // Pega as configs definidas no index.html
   const SUPABASE_URL = window.__SUPABASE_CONFIG.SUPABASE_URL;
   const SUPABASE_ANON_KEY = window.__SUPABASE_CONFIG.SUPABASE_ANON_KEY;
- const supabase = window.supabase.createClient(URL, KEY);
 
+  // Inicializa corretamente o Supabase
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   const grid = document.getElementById('productsGrid');
 
   async function load() {
     grid.innerHTML = 'Carregando...';
-    const { data, error } = await supabase.from('produtos').select('*').order('criado_em', { ascending: false }).limit(50);
-    if(error){ grid.innerHTML = '<p>Erro ao carregar produtos.</p>'; console.error(error); return; }
-    if(!data || data.length === 0){ grid.innerHTML = '<p>Nenhum produto cadastrado.</p>'; return; }
+
+    const { data, error } = await supabase
+      .from('produtos')
+      .select('*')
+      .order('criado_em', { ascending: false })
+      .limit(50);
+
+    if (error) {
+      grid.innerHTML = '<p>Erro ao carregar produtos.</p>';
+      console.error(error);
+      return;
+    }
+
+    if (!data || data.length === 0) {
+      grid.innerHTML = '<p>Nenhum produto cadastrado.</p>';
+      return;
+    }
 
     grid.innerHTML = '';
+
     data.forEach(p => {
       const card = document.createElement('div');
       card.className = 'product-card';
@@ -36,7 +53,9 @@
       meta.innerHTML = `<small style="color:#9b9b9b">${p.preco_tipo === 'valor' ? 'R$ '+(p.preco?Number(p.preco).toFixed(2):'-') : 'Preço a combinar'}</small>`;
 
       const btn = document.createElement('a');
-      const mensagem = encodeURIComponent(`Olá! Vi esta peça no site da Alternativa e gostaria de saber o valor e se ainda está disponível:%0A• Produto: ${p.nome}%0APode me ajudar?`);
+      const mensagem = encodeURIComponent(`Olá! Vi esta peça no site da Alternativa e gostaria de saber o valor e se ainda está disponível:
+• Produto: ${p.nome}
+Pode me ajudar?`);
       btn.href = `https://wa.me/5534998101100?text=${mensagem}`;
       btn.target = '_blank';
       btn.rel = 'noopener noreferrer';
