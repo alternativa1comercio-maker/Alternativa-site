@@ -1,7 +1,8 @@
 // admin.js - painel admin para Supabase
 (async () => {
   const { SUPABASE_URL, SUPABASE_ANON_KEY } = window.__SUPABASE_CONFIG;
-  const supabase = supabasejs.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 
   // elementos
   const authSection = document.getElementById('authSection');
